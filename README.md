@@ -18,3 +18,5 @@ The former is available for download, or for viewing, but the latter smaller ima
 The command is in the format `bc.py <path to folder>`.
 
 For example, `bc.py /home/reece/Pictures/uploads` would compress and rename all pictures in the `/uploads` folder.
+
+NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file path `/home/reece/Pictures/my uploads` would need to be passed as an argument like this: `bc.py "/home/reece/Pictures/my uploads"`
