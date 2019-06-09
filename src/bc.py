@@ -21,28 +21,34 @@ def validateArgs():
     if(not os.path.isdir(sys.argv[1])):
         exit("Error: '" + sys.argv[1] + "' is not a folder")
 
-    # finally, does the folder contain only images?
+    # finally, does the folder contain only .jpg images?
     for file in os.listdir(sys.argv[1]):
         if(not file.split('.')[1].lower() == "jpg"):
             exit("Error: '" + file + "' is not a jpg file")
-
-
 
     # if program hasn't exited by this point, all is A-OK
     return True
 
 
-
 def compress():
+    wrapped = False
     for root, dirs, files in os.walk(os.path.abspath(sys.argv[1])):
         for file in files:
+            baseFileName = file.split('.')[0] # remove file extension
             abs = os.path.join(root, file)
             # wrap absolute path in quotes if it contains any spaces
             if(' ' in abs):
                 abs = "\"" + abs + "\""
-            command = "convert " + abs + " -quality 50% " + os.path.dirname(abs) + "/" + file + "-half.JPG\""
-            print(command)
+                wrapped = True
+
+            if(wrapped):
+                command = "convert " + abs + " -quality 50% " + os.path.dirname(abs) + "/" + baseFileName + "-half.JPG\""
+            else:
+                command = "convert " + abs + " -quality 50% " + os.path.dirname(abs) + "/" + file + "-half.JPG"
+            print("Compressing: " + file)
             os.system(command)
+
+        print("Compression finished!")
 
 
 if(__name__ == "__main__"):
