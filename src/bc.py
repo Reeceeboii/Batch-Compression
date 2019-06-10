@@ -12,6 +12,8 @@ def validateArgs():
     # firstly, has an argument been given?
     if(len(sys.argv) < 2):
         exit("Error: please provide an argument of the path to the images")
+    elif(len(sys.argv) >= 3):
+        exit("Error: please provide only 1 argument")
 
     # then, is the given argument a valid file path?
     if(not os.path.exists(sys.argv[1])):
@@ -23,8 +25,11 @@ def validateArgs():
 
     # finally, does the folder contain only .jpg images?
     for file in os.listdir(sys.argv[1]):
-        if(not file.split('.')[1].lower() == "jpg"):
-            exit("Error: '" + file + "' is not a jpg file")
+        try:
+            if(not file.split('.')[1].lower() == "jpg"):
+                exit("Error: '" + file + "' is not a jpg file")
+        except IndexError:
+                exit("Error: '" + file + "' could not be parsed")
 
     # if program hasn't exited by this point, all is A-OK
     return True
