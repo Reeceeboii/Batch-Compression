@@ -6,7 +6,7 @@ This small Python script (which is simply a custom wrapper around the [ImageMagi
 
 Images can often be reduced by up to ~ 80% - 90%, going from ~6MB down to ~300KB.
 
-The former is available for download, or for viewing, but the latter smaller image is the one displayed on the site by default, saving the end user from having to download lots of full resolution DSLR images.
+On my photography site, the original size images are available for download, or for viewing, but the smaller images are the ones displayed on the site by default, saving the end user from having to download lots of full resolution DSLR images.
 
 # Prerequisites
   The ImageMagick binaries should be installed on your system and accessible via the terminal (i.e. make sure they're globally executable else this script won't function). If ImageMagick is not installed, look up a tutorial for your particular OS.
