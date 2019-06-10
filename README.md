@@ -11,7 +11,7 @@ On my photography site, the original size images are available for download, or 
 # Prerequisites
   The ImageMagick binaries should be installed on your system and accessible via the terminal (i.e. make sure they're globally executable else this script won't function). If ImageMagick is not installed, look up a tutorial for your particular OS.
 
-  You also need Python 3. MacOS comes bundled with this, but for Linux & Windows you need to do this yourself.
+  You also need Python 3. MacOS comes bundled with this, but for Linux & Windows you may need to do this yourself.
 
 
 # Installation on Linux systems
@@ -29,3 +29,34 @@ NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file pat
 
 
 ![Terminal example](res/terminal-example.png)
+
+# Output
+Running this script doubles the number of images in the folder. The full size originals are left as they are, but each of them has its name taken and is appended with `-half` to denote them being compressed by an argument of 50% being passed to the ImageMagick `convert` command.
+
+# Example
+
+#### Pre execution
+
+```
+└───|/cat-pictures
+│   └── image1.jpg
+│   └── image2.jpg
+│   └── image3.jpg
+│   └── image4.jpg
+```
+
+* Execute script with absolute path to folder
+  * `user@pc: ~$ bc.py /absolute/path/to/cat-pictures`
+
+#### Post execution
+```
+└───|/cat-pictures
+│   └── image1.jpg
+│   └── image1-half.jpg
+│   └── image2.jpg
+│   └── image2-half.jpg
+│   └── image3.jpg
+│   └── image3-half.jpg
+│   └── image4.jpg
+│   └── image4-half.jpg
+```
