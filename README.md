@@ -15,18 +15,19 @@ On my photography site, the original size images are available for download, or 
 
 
 # Installation on Linux systems
-  * Make sure script is executable: `sudo chmod +x bc.py`
-  * Move file to `/bin`: `sudo mv bc.py /bin`
-    * or `sudo cp bc.py /bin` if you want to keep another copy from the source
+  * Make sure script is executable: `~$ sudo chmod +x bc.py`
+  * Move file to `/bin`: `~$ sudo mv bc.py /bin`
+    * or `~$ sudo cp bc.py /bin` if you want to keep another copy from the source
 
 
 # Usage
-The command is in the format `bc.py <path to folder>`.
+The command is in the format `~$ bc.py <path to folder>`.
 
-For example, `bc.py /home/reece/Pictures/uploads` would compress and rename all pictures in the `/uploads` folder.
+For example, `~$ bc.py /home/reece/Pictures/uploads` would compress and rename all pictures in the `/uploads` folder.
 
-NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file path `/home/reece/Pictures/my uploads` would need to be passed as an argument like this: `bc.py "/home/reece/Pictures/my uploads"`
+NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file path `/home/reece/Pictures/my uploads` would need to be passed as an argument like this: `~$ bc.py "/home/reece/Pictures/my uploads"`
 
+## A much easier option is to open the terminal in the destination folder, and then just use the current working directory as the argument, this would then simply become `~$ bc.py .`
 
 ![Terminal example](res/terminal-example.png)
 
