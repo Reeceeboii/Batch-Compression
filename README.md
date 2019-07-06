@@ -21,15 +21,20 @@ On my photography site, the original size images are available for download, or 
 
 
 # Usage
-The command is in the format `~$ bc.py <path to folder>`.
+The command is in the format `~$ bc.py <path to folder> <compression percentage>`.
 
-For example, `~$ bc.py /home/reece/Pictures/uploads` would compress and rename all pictures in the `/uploads` folder.
+Note that providing a compression percentage is optional, the default argument if nothing is provided is 50%.
+
+For example, `~$ bc.py /home/reece/Pictures/uploads` would compress (**default quality 50%**) and rename all pictures in the `/uploads` folder.
+
+... `~$ bc.py /home/reece/Pictures/uploads 25` would compress (**quality 25%**) and rename all pictures in the `/uploads` folder.
+
 
 NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file path `/home/reece/Pictures/my uploads` would need to be passed as an argument like this: `~$ bc.py "/home/reece/Pictures/my uploads"`
 
 ## A much easier option is to open the terminal in the destination folder, and then just use the current working directory as the argument, this would then simply become `~$ bc.py .`
 
-![Terminal example](res/terminal-example.png)
+### Also, the '-half' being appended to the file name is hardcoded since that's the way I needed the script laid out originally. This can very easily be changed though.
 
 # Output
 Running this script doubles the number of images in the folder. The full size originals are left as they are, but each of them has its name taken and is appended with `-half` to denote them being compressed by an argument of 50% being passed to the ImageMagick `convert` command.
@@ -61,3 +66,6 @@ Running this script doubles the number of images in the folder. The full size or
 │   └── image4.jpg
 │   └── image4-half.jpg
 ```
+
+
+![Terminal example](res/terminal-example.png)

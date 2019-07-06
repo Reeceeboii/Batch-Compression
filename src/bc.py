@@ -11,9 +11,19 @@ def checkForImgMgk():
 def validateArgs():
     # firstly, has an argument been given?
     if(len(sys.argv) < 2):
-        exit("Error: please provide an argument of the path to the images")
-    elif(len(sys.argv) >= 3):
-        exit("Error: please provide only 1 argument")
+        exit("""Error: please provide, at minimum, an argument of the path to the images.
+        -> $ bc.py <path> <(default 50) compression percentage>""")
+    elif(len(sys.argv) >= 4):
+        exit("""Error: please provide no more than 2 arguments.
+        -> $ bc.py <path> <(default 50) compression percentage>""")
+
+    if(len(sys.argv) == 3):
+        try:
+            sys.argv[2] = int(sys.argv[2])
+            # if not caught, arg 2 is an int
+        except  ValueError:
+            exit("""Second argument must be an int.
+                -> $ bc.py <path> <(default 50%) compression percentage>""")
 
     # then, is the given argument a valid file path?
     if(not os.path.exists(sys.argv[1])):
@@ -32,10 +42,15 @@ def validateArgs():
                 exit("Error: '" + file + "' could not be parsed")
 
     # if program hasn't exited by this point, all is A-OK
-    return True
+    # return true with a compression percentage. Hardcoded 50% if not
+    # decided by the user
+    if(len(sys.argv) == 3):
+        return True, sys.argv[2]
+    else:
+        return True, 50
 
 
-def compress():
+def compress(compressionPercent):
     wrapped = False
     for root, dirs, files in os.walk(os.path.abspath(sys.argv[1])):
         for file in files:
@@ -47,9 +62,11 @@ def compress():
                 wrapped = True
 
             if(wrapped):
-                command = "convert " + abs + " -quality 50% " + os.path.dirname(abs) + "/" + baseFileName + "-half.JPG\""
+                command = "convert " + abs + " -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + baseFileName + "-half.JPG\""
+                print(command)
             else:
-                command = "convert " + abs + " -quality 50% " + os.path.dirname(abs) + "/" + file + "-half.JPG"
+                command = "convert " + abs + " -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + file + "-half.JPG"
+                print(command)
             print("Compressing: " + file)
             os.system(command)
 
@@ -58,7 +75,9 @@ def compress():
 
 if(__name__ == "__main__"):
     if(checkForImgMgk()):
-        if(validateArgs()):
-            compress()
+        validated, compressionPercent = validateArgs()
+        if(validated):
+            compress(compressionPercent)
+
     else:
         exit("Error: it doesn't seem that you have the ImageMagick binaries installed")
