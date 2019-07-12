@@ -34,7 +34,7 @@ NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file pat
 
 ## A much easier option is to open the terminal in the destination folder, and then just use the current working directory as the argument, this would then simply become `~$ bc.py .`
 
-### Also, the '-half' being appended to the file name is hardcoded since that's the way I needed the script laid out originally. This can very easily be changed though.
+### Also, the '-compressed' string being appended to the file name is hardcoded since that's the way I needed the script laid out originally. This can very easily be changed though if something else is needed for your use case.
 
 # Output
 Running this script doubles the number of images in the folder. The full size originals are left as they are, but each of them has its name taken and is appended with `-half` to denote them being compressed by an argument of 50% being passed to the ImageMagick `convert` command.
@@ -58,13 +58,13 @@ Running this script doubles the number of images in the folder. The full size or
 ```
 └───|/cat-pictures
 │   └── image1.jpg
-│   └── image1-half.jpg
+│   └── image1-compressed.jpg
 │   └── image2.jpg
-│   └── image2-half.jpg
+│   └── image2-compressed.jpg
 │   └── image3.jpg
-│   └── image3-half.jpg
+│   └── image3-compressed.jpg
 │   └── image4.jpg
-│   └── image4-half.jpg
+│   └── image4-compressed.jpg
 ```
 
 
