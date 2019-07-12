@@ -62,10 +62,10 @@ def compress(compressionPercent):
                 wrapped = True
 
             if(wrapped):
-                command = "convert " + abs + " -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + baseFileName + "-compressed.JPG\""
+                command = "convert " + abs + " -sampling-factor 4:2:0 -strip -interlace JPEG -colorspace sRGB -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + baseFileName + "-compressed.JPG\""
                 print(command)
             else:
-                command = "convert " + abs + " -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + file + "-compressed.JPG"
+                command = "convert " + abs + " -sampling-factor 4:2:0 -strip -interlace JPEG -colorspace sRGB -quality " + str(compressionPercent) + "% " + os.path.dirname(abs) + "/" + baseFileName + "-compressed.JPG"
                 print(command)
             print("Compressing: " + file)
             os.system(command)
