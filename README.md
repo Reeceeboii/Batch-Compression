@@ -15,10 +15,11 @@ On my photography site, the original size images are available for download, or 
 
 
 # Installation on Linux systems
+      * Run install.sh with sudo privileges.
   * Make sure script is executable: `~$ sudo chmod +x bc.py`
   * Move file to `/bin`: `~$ sudo mv bc.py /bin`
     * or `~$ sudo cp bc.py /bin` if you want to keep another copy from the source
-
+    
 
 # Usage
 The command is in the format `~$ bc.py <path to folder> <compression percentage>`.
