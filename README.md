@@ -4,7 +4,9 @@ This was born out of a need to create different size versions of large images be
 
 This small Python script (which is simply a custom wrapper around the [ImageMagick](https://github.com/ImageMagick/ImageMagick) binaries) allows me to create renamed and reduced file size version of each image in a particular destination.
 
-Images can often be reduced by up to ~ 80% - 90%, going from ~6MB down to ~300KB.
+Images can often be reduced in their size by a significant amount. The script both shrinks and compresses.
+As an example, a 4.29mb JPG can come out the other end at 62.9kb. A huge reduction is storage requirements and network load
+and you get an image perfect to place on to a website.
 
 On my photography site, the original size images are available for download, or for viewing, but the smaller images are the ones displayed on the site by default, saving the end user from having to download lots of full resolution DSLR images.
 
@@ -44,7 +46,7 @@ NOTE: if the file path contains any spaces, wrap it in quotes, i.e. the file pat
 
 # Output
 Running this script doubles the number of images in the folder. Each file has its name changed from its original to a new
-UUID value (this is due to me needing the images to be unique amongst many other potentially conflicting file names in an S3 bucket).
+UUID4 value (this is due to me needing the images to be unique amongst many other potentially conflicting file names in an S3 bucket).
 There is a renamed full size original, and then a renamed compressed version with `-compressed` appended to the end such that there is an easy programmatic way of working out which images are which.
 
 # Example
